@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image, Pressable } from 'react-native';
 import { global } from '../config/global';
 
 export default function PhotosScreen({ navigation }) {
@@ -36,7 +36,13 @@ export default function PhotosScreen({ navigation }) {
                         numColumns={2}
                         style={{margin: 10}}
                         renderItem={({item}) => (
-                            <Image style={styles.resultImage} source={{uri: item.urls.regular}}/>)}
+                            <Pressable style={styles.resultImageTouchable} onPress={() => {
+                                navigation.navigate('Photo Details', {
+                                    photoId: item.id,
+                                });
+                            }}>
+                            <Image style={styles.resultImage} source={{uri: item.urls.regular}}/>
+                            </Pressable>)}
                         />
                 </View>) : (<View style={styles.loadingContainer}>
                      <ActivityIndicator size="large" color="#000"/>
@@ -56,7 +62,11 @@ const styles = StyleSheet.create({
     },
     resultImage: {
         flex: 1,
-        margin: 10,
         height: 200
     },
+    resultImageTouchable: {
+        flex: 1,
+        margin: 10,
+        height: 200
+    }
 });
