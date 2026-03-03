@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image, Pressable } from 'react-native';
 import { global } from '../config/global';
+import SearchForm from '../components/SearchForm';
 
 export default function PhotosScreen({ navigation }) {
     const [searchQuery, setSearchQuery] = useState('Beach');
@@ -30,6 +31,7 @@ export default function PhotosScreen({ navigation }) {
 
         return (
             <View style={styles.PhotosScreen}>
+                <SearchForm setSearchQuery={setSearchQuery} type=" Photos"/>
                 {photos && photos.length > 0 ? (<View style={styles.resultsContainer}>
                         <FlatList
                         data={photos}

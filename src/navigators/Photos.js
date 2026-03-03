@@ -9,7 +9,7 @@ export default function PhotosNavigator() {
 
     return (
         <stack.Navigator style={styles.PhotosNavigator}>
-            <stack.Screen name="Photos" component={PhotosScreen}/>
+            <stack.Screen name="Photos" component={PhotosScreen} options={{ headerShown: false }}/>
             <stack.Screen name="Photo Details" component={PhotoDetailsScreen}/>
         </stack.Navigator>
     );
